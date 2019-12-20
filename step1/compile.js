@@ -12,7 +12,6 @@ function compile(node, vm) {
   }
   //如果节点类型为text
   if(node.nodeType === 3) {
-    
     if(reg.test(node.nodeValue)) {
       var name = RegExp.$1;//获取匹配到的字符串
       name = name.trim();
@@ -24,7 +23,7 @@ function compile(node, vm) {
 function nodeContainer(node, vm, flag) {
   var flag = flag || document.createDocumentFragment();
   var child;
-  while(child = node.firstChild) {
+  while(child === node.firstChild) {
     compile(child, vm);
     flag.appendChild(child);
     if(child.firstChild) {

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="mvvm">
+    <input v-model="msg" id="input"></input>
+    <div id="output">{{msg}}</div>
+  </div>
+  <script src="./myvue.js"></script>
+  <script src="./compile.js"></script>
+  <script src="./observe.js"></script>
+  <script>
+    var vm = new Vue({
+      el:'mvvm',
+      data:{
+        msg:'HelloWorld',
+      }
+    })
+  </script>
+ </div>
+</body>
+</html>

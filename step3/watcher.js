@@ -8,7 +8,7 @@ function Watcher(vm, node, name) {
 }
 
 Watcher.prototype = {
-  update:function() {
+  update: function() {
     this.get();
     switch(this.node.nodeType) {
       case 1: 
@@ -20,7 +20,7 @@ Watcher.prototype = {
       default: break;
     }
   },
-  get:function() {
+  get: function() {
     this.value = this.vm[this.name];
   }
 }

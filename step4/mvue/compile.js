@@ -8,11 +8,9 @@ export function compile(node, vm) {
     for(var i = 0;i < attr.length; i++) {
       if(attr[i].nodeName == 'v-model') {
         var name = attr[i].nodeValue;
-        //------------------------- 这里新添加的监听
         node.addEventListener('input', function(e) {
           vm[name] = e.target.value; 
         });
-        //-------------------------
         // 将实例中的data数据赋值给节点
         node.value = vm[name]; 
         node.removeAttribute('v-model');

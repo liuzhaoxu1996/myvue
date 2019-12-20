@@ -1,38 +1,31 @@
 function compile(node, vm) {
-  var reg = /\{\{(.*)\}\}/g;
+  var reg = /\{\{(.*?)\}\}/g;//匹配双绑的双大括号
   if(node.nodeType === 1) {
     var attr = node.attributes;
     //解析节点的属性
     for(var i = 0;i < attr.length; i++) {
       if(attr[i].nodeName == 'v-model') {
-        var name = attr[i].nodeValue;
-        //------------------------- 这里新添加的监听
+        var name = attr[i].nodeValue; 
         node.addEventListener('input', function(e) {
-          vm[name] = e.target.value; 
+          vm[name] = e.target.value;
         });
-        //-------------------------
-        // 将实例中的data数据赋值给节点
-        node.value = vm[name]; 
-        node.removeAttribute('v-model');
-        new Watcher(vm, node, name);
+        node.value = vm.data[name];
       }
-      
     }
   }
   //如果节点类型为text
   if(node.nodeType === 3) {
+    
     if(reg.test(node.nodeValue)) {
       var name = RegExp.$1;//获取匹配到的字符串
       name = name.trim();
-      // node.nodeValue = vm.data[name];
-      new Watcher(vm, node, name);
+      node.nodeValue = vm.data[name];
     }
   }
 }
 
 function nodeContainer(node, vm, flag) {
   var flag = flag || document.createDocumentFragment();
-
   var child;
   while(child = node.firstChild) {
     compile(child, vm);
