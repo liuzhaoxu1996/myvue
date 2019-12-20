@@ -2,11 +2,11 @@ import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 
 export default {
-  input: './mvue/mvue.js',
+  input: './mvue/myvue.js',
   output: {
-    file: './dist/mvue.js',
+    file: './dist/myvue.js',
     format: 'umd',
-    name: 'MVue'
+    name: 'Vue'
   },
   plugins: [
     resolve(),

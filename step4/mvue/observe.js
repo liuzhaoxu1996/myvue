@@ -1,10 +1,12 @@
-function observe (obj,vm) {
+import { Dep } from './dep'
+
+export function observe (obj,vm) {
   Object.keys(obj).forEach(function(key) {
     defineReactive(vm, key, obj[key]);
   })
 }
 
-function defineReactive (obj, key, value) {
+export function defineReactive (obj, key, value) {
   //每一个vm的data属性值声明一个新的订阅者
   var dep = new Dep();
   Object.defineProperty(obj, key, {
