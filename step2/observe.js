@@ -15,7 +15,7 @@ function defineReactive (obj, key, value) {
             return;
         }
         value = newValue;
-        document.getElementById('output').innerHTML = value;
+        document.getElementById('output').innerText = value;
         console.log("set了最新值"+value);
     }
   })

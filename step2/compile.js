@@ -15,17 +15,17 @@ function compile(node, vm) {
   }
   //如果节点类型为text
   if(node.nodeType === 3) {
-    
     if(reg.test(node.nodeValue)) {
-      var name = RegExp.$1;//获取匹配到的字符串
+      var name = RegExp.$1;
       name = name.trim();
       node.nodeValue = vm.data[name];
     }
   }
 }
 
-function nodeContainer(node, vm, flag) {
+function nodeContainer(node, vm, flag){
   var flag = flag || document.createDocumentFragment();
+
   var child;
   while(child = node.firstChild) {
     compile(child, vm);
