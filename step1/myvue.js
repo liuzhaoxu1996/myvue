@@ -4,7 +4,5 @@ class Vue {
     var id = options.el;
     var dom = nodeContainer(document.getElementById(id), this)
     document.getElementById(id).appendChild(dom)
-    
   }
-  
 }
